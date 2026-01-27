@@ -1,1 +1,278 @@
+:root {
+  --bg: #f8fafc;            
+  --bg-alt: #ffffff;        
+  --chart-bg: #ffffff;      
+  --accent: #0284c7;        
+  --accent-soft: #e0f2fe;   
+  --text-main: #0f172a;     
+  --text-muted: #64748b;    
+  --border-subtle: #e2e8f0; 
+  --slider-track: #cbd5e1; 
+  --slider-thumb: #0284c7;  
+  --shadow: rgba(0, 0, 0, 0.1);
+}
 
+body.dark-mode {
+  --bg: #020617;
+  --bg-alt: #0f172a;
+  --chart-bg: #0b1120;
+  --accent: #38bdf8;        
+  --accent-soft: #0f172a;
+  --text-main: #f1f5f9;     
+  --text-muted: #94a3b8;
+  --border-subtle: #1e293b;
+  --slider-track: #334155; 
+  --slider-thumb: #38bdf8;
+  --shadow: rgba(0, 0, 0, 0.5);
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, sans-serif;
+  background: var(--bg);
+  color: var(--text-main);
+  line-height: 1.6;
+  transition: background 0.3s, color 0.3s; 
+}
+
+.site-header {
+  padding: 1rem 2rem;
+  border-bottom: 1px solid var(--border-subtle);
+  background: var(--bg-alt); 
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  transition: background 0.3s;
+}
+
+.header-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+  max-width: 1200px;
+  margin: 0 auto 1rem;
+}
+
+.header-controls {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+
+.site-header h1 {
+  margin: 0;
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--text-main);
+}
+
+.subtitle {
+  margin: 0;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+.top-nav {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.top-nav a {
+  color: var(--text-muted);
+  text-decoration: none;
+  font-size: 0.85rem;
+  padding: 0.25rem 0.75rem;
+  border-radius: 4px;
+  transition: all 0.2s;
+}
+
+.top-nav a:hover {
+  background: var(--border-subtle);
+  color: var(--accent);
+}
+
+button.std-btn {
+  background: var(--bg);
+  color: var(--text-main);
+  border: 1px solid var(--border-subtle);
+  padding: 0.4rem 0.8rem;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.8rem;
+  transition: all 0.2s;
+}
+button.std-btn:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+}
+
+main {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem;
+}
+
+.narrative-bridge {
+  margin: 3rem auto;
+  padding: 1.5rem;
+  border-left: 3px solid var(--accent);
+  background: var(--bg-alt);
+  border: 1px solid var(--border-subtle);
+  border-radius: 0 8px 8px 0;
+  max-width: 800px;
+  box-shadow: 0 4px 6px -1px var(--shadow);
+}
+.narrative-bridge p { margin: 0; font-size: 1.05rem; color: var(--text-main); }
+
+.chapter {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  margin-bottom: 4rem;
+  padding: 2rem;
+  border-radius: 1rem;
+  background: var(--bg-alt);
+  border: 1px solid var(--border-subtle);
+  box-shadow: 0 10px 15px -3px var(--shadow);
+}
+
+@media (min-width: 900px) {
+  .chapter { grid-template-columns: 350px 1fr; }
+  .intro-layout { grid-template-columns: 1.5fr 1fr; }
+}
+
+.chapter-text h2 { margin-top: 0; color: var(--accent); font-size: 1.4rem; }
+.chapter-text p { color: var(--text-muted); font-size: 0.95rem; }
+.instruction { font-size: 0.85rem; font-style: italic; opacity: 0.7; }
+
+.controls-row {
+  margin-top: 1.5rem;
+  background: var(--bg); 
+  padding: 1rem;
+  border-radius: 8px;
+  border: 1px solid var(--border-subtle);
+}
+
+input[type=range] {
+  -webkit-appearance: none; 
+  width: 100%; 
+  background: transparent; 
+  margin-top: 10px;
+}
+
+input[type=range]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  height: 16px;
+  width: 16px;
+  border-radius: 50%;
+  background: var(--slider-thumb);
+  cursor: pointer;
+  margin-top: -6px; 
+  box-shadow: 0 0 2px rgba(0,0,0,0.5);
+}
+
+input[type=range]::-webkit-slider-runnable-track {
+  width: 100%;
+  height: 4px;
+  cursor: pointer;
+  background: var(--slider-track);
+  border-radius: 2px;
+}
+
+input[type=range]::-moz-range-thumb {
+  height: 16px;
+  width: 16px;
+  border-radius: 50%;
+  background: var(--slider-thumb);
+  cursor: pointer;
+  border: none;
+}
+input[type=range]::-moz-range-track {
+  width: 100%;
+  height: 4px;
+  cursor: pointer;
+  background: var(--slider-track);
+  border-radius: 2px;
+}
+
+.chart-container {
+  background: var(--chart-bg);
+  border-radius: 8px;
+  padding: 1rem;
+  border: 1px solid var(--border-subtle);
+  min-height: 400px;
+  display: flex;
+  flex-direction: column;
+}
+
+svg { width: 100%; height: 100%; overflow: visible; }
+
+text { fill: var(--text-muted); }
+.axis path, .axis line { stroke: var(--border-subtle); }
+.axis text { fill: var(--text-muted); }
+
+.chart-caption {
+  margin-top: auto;
+  padding-top: 1rem;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  text-align: center;
+  border-top: 1px solid var(--border-subtle);
+}
+
+.tooltip {
+  position: absolute;
+  pointer-events: none;
+  background: var(--bg-alt);
+  color: var(--text-main);
+  padding: 0.5rem 0.8rem;
+  border-radius: 6px;
+  font-size: 0.8rem;
+  border: 1px solid var(--border-subtle);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.5);
+  z-index: 50;
+}
+.ev-graphic-card {
+  background: linear-gradient(135deg, var(--bg) 0%, var(--bg-alt) 100%);
+  padding: 1.5rem;
+  border-radius: 12px;
+  border: 1px solid var(--border-subtle);
+}
+.ev-graphic-pill {
+  background: var(--bg);
+  margin-bottom: 0.5rem;
+  padding: 0.5rem;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  border: 1px solid var(--border-subtle);
+}
+.ev-graphic-pill span {
+  color: var(--accent);
+  font-weight: bold;
+  margin-right: 0.5rem;
+  text-transform: uppercase;
+  font-size: 0.75rem;
+}
+
+.legend { display: flex; flex-wrap: wrap; gap: 0.8rem; margin-top: 1rem; justify-content: center;}
+.legend-item { display: flex; align-items: center; gap: 0.3rem; font-size: 0.75rem; color: var(--text-muted); cursor: pointer; }
+.legend-swatch { width: 8px; height: 8px; border-radius: 50%; }
+
+.heatmap-cell:hover { stroke: var(--text-main); stroke-width: 2px; }
+
+.site-footer {
+  text-align: center;
+  padding: 2rem;
+  color: var(--text-muted);
+  font-size: 0.8rem;
+  border-top: 1px solid var(--border-subtle);
+  margin-top: 3rem;
+}

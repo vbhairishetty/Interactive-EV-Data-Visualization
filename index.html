@@ -1,1 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>The Electric Vehicle Revolution</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/topojson-client@3"></script>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="header-inner">
+        <div>
+          <h1>The Electric Vehicle Revolution</h1>
+          <p class="subtitle">
+            Team: Angela, Mrudula, Navigna, Tanmai, Vaishnavi
+          </p>
+        </div>
+        
+        <div class="header-controls">
+            <button id="theme-toggle" class="std-btn">🌙 Dark Mode</button>
+            <button id="reset-pcp" class="std-btn">Reset Filter</button>
+        </div>
+      </div>
+      <nav class="top-nav">
+        <a href="#chapter-intro">Intro</a>
+        <a href="#chapter-sales">1. Sales</a>
+        <a href="#chapter-stock">2. Stock</a>
+        <a href="#chapter-heatmap">3. Adoption Rates</a>
+        <a href="#chapter-scatter">4. Infrastructure</a>
+        <a href="#chapter-pcp">5. Global Profile</a>
+      </nav>
+    </header>
 
+    <main>
+      <section id="chapter-intro" class="chapter intro-layout">
+        <div class="chapter-text">
+          <h2>From Niche to Mainstream</h2>
+          <p class="intro-lede">
+            Electric vehicles (EVs) have moved quickly from a side experiment to
+            a serious option for everyday drivers.
+          </p>
+          <p>
+            In this essay, we analyze the transition through three lenses:
+            <strong>Volume</strong> (Sales & Stock), <strong>Density</strong> (Market Share),
+            and <strong>Enablers</strong> (Infrastructure).
+          </p>
+        </div>
+        <div class="chapter-visual">
+          <div class="ev-graphic-card">
+            <div class="ev-graphic-heading">The Data Story</div>
+            <div class="ev-graphic-pills">
+              <div class="ev-graphic-pill">
+                <span>Volume</span> How many cars are being sold?
+              </div>
+              <div class="ev-graphic-pill">
+                <span>Density</span> What % of the market is electric?
+              </div>
+              <div class="ev-graphic-pill">
+                <span>Infra</span> Can the chargers keep up?
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div class="narrative-bridge">
+        <p>
+          First, let's look at the sheer <strong>volume</strong>. Which regions are
+          driving the purchase of new electric vehicles?
+        </p>
+      </div>
+
+      <section id="chapter-sales" class="chapter">
+        <div class="chapter-text">
+          <h2>1. Global Sales Volume</h2>
+          <p>
+            China and Europe have historically led the charge. Use the slider to
+            see how sales volume exploded after 2020.
+          </p>
+          <div class="controls-row">
+            <label for="sales-year-slider">
+              Year: <span id="sales-year-label"></span>
+            </label>
+            <input
+              type="range"
+              id="sales-year-slider"
+              class="styled-slider"
+            />
+          </div>
+        </div>
+        <div class="chart-container">
+          <svg id="sales-bar-chart"></svg>
+          <div class="chart-caption">
+            Annual EV sales (millions) grouped by region.
+          </div>
+        </div>
+      </section>
+
+      <section id="chapter-stock" class="chapter">
+        <div class="chapter-text">
+          <h2>2. Accumulation on the Road</h2>
+          <p>
+            Sales happen once, but "Stock" represents the total number of EVs
+            actively being driven. This shows the cumulative impact of sales
+            over time.
+          </p>
+          <p class="instruction">
+            Hover over lines to isolate specific country trajectories.
+          </p>
+        </div>
+        <div class="chart-container">
+          <svg id="stock-line-chart"></svg>
+          <div class="chart-caption">
+            Total EV Stock (vehicles in operation) 2010–2023.
+          </div>
+        </div>
+      </section>
+
+      <div class="narrative-bridge">
+        <p>
+          High sales numbers can be misleading if a country has a huge population (like China).
+          To understand true popularity, we must look at <strong>Market Share</strong>:
+          the percentage of new cars sold that are electric.
+        </p>
+      </div>
+
+      <section id="chapter-heatmap" class="chapter">
+        <div class="chapter-text">
+          <h2>3. The Rise of Market Share</h2>
+          <p>
+            Unlike a geographic map which has gaps, this <strong>Heatmap</strong> visualizes 
+            adoption intensity.
+          </p>
+          <p>
+            Darker blue squares indicate years where EVs dominated new car sales.
+            Notice how Nordic countries (Norway, Sweden) turn dark blue much earlier than the rest of the world.
+          </p>
+        </div>
+        <div class="chart-container">
+          <svg id="market-heatmap"></svg>
+          <div class="chart-caption">
+            EV Market Share (%) by Country and Year. (Top 25 Countries by max share).
+          </div>
+        </div>
+      </section>
+
+      <div class="narrative-bridge">
+        <p>
+          Adoption cannot happen without support. For the next chapter, we zoom into
+          the <strong>United States</strong> to see if infrastructure (chargers) is keeping up with the cars.
+        </p>
+      </div>
+
+      <section id="chapter-scatter" class="chapter">
+        <div class="chapter-text">
+          <h2>4. U.S. Infrastructure Gap</h2>
+          <p>
+            This scatter plot correlates <strong>Public Chargers</strong> (X-axis) with
+            <strong>EV Stock</strong> (Y-axis).
+          </p>
+          <p>
+            States on the far right have built robust infrastructure. States high up
+            but to the left (like California) have many EVs but are struggling to build
+            enough public chargers per vehicle.
+          </p>
+          <div class="controls-row">
+            <label for="scatter-year-slider">
+              Year: <span id="scatter-year-label"></span>
+            </label>
+            <input
+              type="range"
+              id="scatter-year-slider"
+              class="styled-slider"
+            />
+          </div>
+        </div>
+        <div class="chart-container">
+          <svg id="infra-scatter-chart"></svg>
+          <div class="chart-caption">
+            US States: Circle size = Market Share %.
+          </div>
+        </div>
+      </section>
+
+      <section id="chapter-pcp" class="chapter">
+        <div class="chapter-text">
+          <h2>5. Global Country Profiles</h2>
+          <p>
+            Finally, we use this multivariate filter to find patterns across all metrics.
+          </p>
+          <p>
+            <strong>Drag vertically along axes</strong> to filter countries. For example, filter for high "Market Share"
+            to see if those countries also have high "CO2 Emissions" (usually not).
+          </p>
+        </div>
+        <div class="chart-container">
+          <svg id="pcp-chart"></svg>
+          <div class="chart-caption">
+            Parallel Coordinates: Filter to cross-highlight countries in previous charts.
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      CSE 478 – Foundations of Data Visualization &middot; Team: Angela · Mrudula ·
+      Navigna · Tanmai · Vaishnavi
+    </footer>
+
+    <script src="main.js"></script>
+  </body>
+</html>
